@@ -817,6 +817,7 @@ main.grid{flex:1;min-height:0;display:grid;grid-template-columns:minmax(340px,44
 .pin.sel{outline:3px solid var(--ink);outline-offset:1px}
 .leaflet-container{font-family:var(--f-body);background:var(--sea)}
 .leaflet-div-icon{background:none;border:0}
+.tiles-dark{filter:invert(1) hue-rotate(180deg) brightness(.85) contrast(.9)}
 .leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
 .leaflet-popup-content{margin:12px 14px;font-size:.84rem;line-height:1.4;min-width:220px}
 .leaflet-container a.leaflet-popup-close-button{color:var(--muted)}
@@ -1163,14 +1164,15 @@ function initMap(){
   map.addLayer(cluster);
   $("#legend").innerHTML = Object.keys(SUB).map(k => `<span><i class="swatch" style="background:${COLOR(k)}"></i>${SUB[k].label}</span>`).join("") + `<span style="color:var(--muted)">Number = trials at that location</span>`;
   // Street tiles load when the page is hosted on the open web; inside a sandbox the drawn coastline is used instead.
+  // OpenStreetMap standard tiles need no API key; in dark mode they are darkened with a CSS filter.
   const probe = new Image();
   probe.onload = () => {
     const dark = matchMedia("(prefers-color-scheme: dark)").matches && document.documentElement.dataset.theme !== "light" || document.documentElement.dataset.theme === "dark";
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/" + (dark ? "dark_all" : "light_all") + "/{z}/{x}/{y}{r}.png", {subdomains:"abcd", maxZoom:19,
-      attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>'}).addTo(map);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom:19, className: dark ? "tiles-dark" : "",
+      attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'}).addTo(map);
     map.setMaxZoom(15);
   };
-  probe.src = "https://a.basemaps.cartocdn.com/light_all/5/31/19.png";
+  probe.src = "https://tile.openstreetmap.org/5/31/19.png";
 }
 function getVar(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
 function renderMap(rows){
