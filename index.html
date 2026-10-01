@@ -831,7 +831,12 @@ main.grid{flex:1;min-height:0;display:grid;grid-template-columns:minmax(340px,44
 .pop button:hover{background:var(--surface-2)}
 .pop .swatch{margin-top:5px}
 
-@media (max-width: 860px){
+@media (max-width: 1000px){
+  main.grid{grid-template-columns:minmax(250px,300px) 1fr}
+  .filters,.resultsbar,.list{padding-left:14px;padding-right:14px}
+  .note{margin-left:14px;margin-right:14px}
+}
+@media (max-width: 600px){
   html,body{height:auto}
   .app{height:auto}
   main.grid{display:flex;flex-direction:column}
@@ -1206,7 +1211,7 @@ function zoomTo(id){
   if (!pts.length) return;
   if (pts.length === 1) map.flyTo(pts[0], 8, {duration:.6});
   else map.flyToBounds(L.latLngBounds(pts).pad(0.3), {maxZoom:8, duration:.6});
-  if (window.matchMedia("(max-width: 860px)").matches) document.querySelector(".mapwrap").scrollIntoView({behavior:"smooth", block:"center"});
+  if (window.matchMedia("(max-width: 600px)").matches) document.querySelector(".mapwrap").scrollIntoView({behavior:"smooth", block:"center"});
 }
 
 /* ---------- interactions ---------- */
