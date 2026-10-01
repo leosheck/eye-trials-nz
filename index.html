@@ -3,7 +3,7 @@
 <meta name="description" content="Map of ophthalmology clinical trials with sites in New Zealand, from ClinicalTrials.gov">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* required styles */
 
@@ -683,33 +683,33 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 </style>
 <style>
-/* Layout: filter-and-list rail on the left, full-height map on the right; stacks to one column on phones. */
+/* Layout: filter-and-list rail on the left, full-height map on the right; stacks to one column on phones. Leo Sheck brand tokens (see /mnt/project-files/brand). */
 :root{
-  --bg:#EEF3F3; --surface:#FFFFFF; --surface-2:#F6F9F9; --ink:#10262A; --muted:#566B6F; --line:#D3DFE0;
-  --accent:#0A6670; --accent-soft:#D7ECEE; --accent-ink:#FFFFFF; --focus:#0A6670;
-  --sea:#D6E5EA; --land:#F4F2EA; --coast:#A9BDB8;
-  --st-rec:#1C7F46; --st-soon:#A86A0C; --st-anr:#2A66A8; --st-done:#66767B; --st-stop:#B03E36; --st-unk:#8E9A9E;
-  --shadow:0 1px 2px rgba(16,38,42,.06),0 4px 16px rgba(16,38,42,.06);
-  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --f-body:"Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  --r:10px;
+  --bg:#F2F2F2; --surface:#FFFFFF; --surface-2:#F7F7F7; --ink:#030F26; --muted:#565E6E; --line:#E4E4E4;
+  --accent:#030F26; --accent-soft:#E4E4E4; --accent-ink:#FFFFFF; --focus:#030F26;
+  --sea:#E4E4E4; --land:#F7F7F7; --coast:#B6BCC6;
+  --st-rec:#2F6B52; --st-soon:#94681C; --st-anr:#4F5B75; --st-done:#7A8292; --st-stop:#9C3A33; --st-unk:#A3A9B4;
+  --shadow:0 1px 2px rgba(3,15,38,.05),0 6px 20px rgba(3,15,38,.06);
+  --f-display:"Inter","Helvetica Neue",Arial,system-ui,sans-serif;
+  --f-body:"Inter","Helvetica Neue",Arial,system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --r:2px;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0C1618; --surface:#132225; --surface-2:#172A2D; --ink:#E2ECEC; --muted:#93A8AB; --line:#27393C;
-    --accent:#57BAC2; --accent-soft:#16383C; --accent-ink:#06191B; --focus:#7FD0D6;
-    --sea:#0A1315; --land:#1B2B2E; --coast:#3A5256;
-    --st-rec:#4CC27F; --st-soon:#E3A443; --st-anr:#6FA6E6; --st-done:#9AABB0; --st-stop:#EC7B72; --st-unk:#7F8D91;
+    --bg:#030F26; --surface:#0A172E; --surface-2:#0E1C36; --ink:#F2F2F2; --muted:#A0A8B8; --line:#1E2B45;
+    --accent:#E4E4E4; --accent-soft:#1A2843; --accent-ink:#030F26; --focus:#E4E4E4;
+    --sea:#030F26; --land:#0E1C36; --coast:#2A3A58;
+    --st-rec:#6FBE98; --st-soon:#D9A65A; --st-anr:#8F9BB4; --st-done:#A0A8B8; --st-stop:#E58A80; --st-unk:#6E7890;
     --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0C1618; --surface:#132225; --surface-2:#172A2D; --ink:#E2ECEC; --muted:#93A8AB; --line:#27393C;
-  --accent:#57BAC2; --accent-soft:#16383C; --accent-ink:#06191B; --focus:#7FD0D6;
-  --sea:#0A1315; --land:#1B2B2E; --coast:#3A5256;
-  --st-rec:#4CC27F; --st-soon:#E3A443; --st-anr:#6FA6E6; --st-done:#9AABB0; --st-stop:#EC7B72; --st-unk:#7F8D91;
+  --bg:#030F26; --surface:#0A172E; --surface-2:#0E1C36; --ink:#F2F2F2; --muted:#A0A8B8; --line:#1E2B45;
+  --accent:#E4E4E4; --accent-soft:#1A2843; --accent-ink:#030F26; --focus:#E4E4E4;
+  --sea:#030F26; --land:#0E1C36; --coast:#2A3A58;
+  --st-rec:#6FBE98; --st-soon:#D9A65A; --st-anr:#8F9BB4; --st-done:#A0A8B8; --st-stop:#E58A80; --st-unk:#6E7890;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
   color-scheme:dark;
 }
@@ -718,22 +718,23 @@ html,body{height:100%}
 body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--f-body);-webkit-font-smoothing:antialiased}
 a{color:var(--accent)}
 button{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:var(--r)}
 .mono{font-family:var(--f-mono);font-size:.82em;letter-spacing:.01em}
 
 .app{display:flex;flex-direction:column;height:100%}
 header.top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;padding:14px 20px;background:var(--surface);border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:12px;min-width:0;flex:1 1 320px}
-.brand svg{flex:none}
-.brand h1{margin:0;font:700 1.45rem/1.1 var(--f-display);letter-spacing:-.01em;text-wrap:balance}
+.brand{display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-width:0;flex:1 1 320px}
+.brand .mark{color:var(--ink);display:block;line-height:0}
+.brand .mark svg{height:12px;width:auto;display:block}
+.brand h1{margin:0;font:300 1.3rem/1.25 var(--f-display);letter-spacing:.14em;text-transform:uppercase;text-wrap:balance}
 .brand p{margin:2px 0 0;color:var(--muted);font-size:.86rem}
 .headline{display:flex;align-items:baseline;gap:8px}
-.headline b{font:700 2rem/1 var(--f-display);color:var(--st-rec);font-variant-numeric:tabular-nums}
+.headline b{font:300 2.2rem/1 var(--f-display);color:var(--st-rec);font-variant-numeric:tabular-nums}
 .headline span{color:var(--muted);font-size:.9rem;max-width:12em;line-height:1.25}
 .source{display:flex;align-items:center;gap:10px;font-size:.8rem;color:var(--muted)}
 .source .dot{width:8px;height:8px;border-radius:50%;background:var(--st-done);flex:none}
 .source.live .dot{background:var(--st-rec)}
-.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.82rem;font-weight:600;cursor:pointer;color:var(--ink);text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:6px 12px;font-size:.82rem;font-weight:600;cursor:pointer;color:var(--ink);text-decoration:none}
 .btn:hover{border-color:var(--accent);color:var(--accent)}
 .btn[disabled]{opacity:.55;cursor:progress}
 
@@ -747,7 +748,7 @@ main.grid{flex:1;min-height:0;display:grid;grid-template-columns:minmax(340px,44
 .statusbox{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
 .sgroup + .sgroup{border-top:1px solid var(--line)}
 .row{display:flex;align-items:center;gap:10px;padding:8px 12px;cursor:pointer;user-select:none}
-.row.master{padding:10px 12px;font-weight:700}
+.row.master{padding:10px 12px;font-weight:600}
 .row.sub{padding-left:16px}
 .sgroup.collapsed .row.sub{display:none}
 .row .lbl{flex:1;min-width:0;display:flex;flex-direction:column}
@@ -766,27 +767,27 @@ main.grid{flex:1;min-height:0;display:grid;grid-template-columns:minmax(340px,44
 .sw.small:checked::after{transform:translateX(12px)}
 
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 11px;font-size:.84rem;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:5px 11px;font-size:.84rem;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
 .chip .n{color:var(--muted);font-variant-numeric:tabular-nums;font-size:.78rem}
 .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .chip[aria-pressed="true"] .n{color:inherit;opacity:.8}
 .chip[disabled]{opacity:.45;cursor:default}
 .search{position:relative}
-.search input{width:100%;padding:9px 12px 9px 34px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;font-size:.9rem}
+.search input{width:100%;padding:9px 12px 9px 34px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);color:var(--ink);font:inherit;font-size:.9rem}
 .search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted)}
 .linkbtn{background:none;border:0;padding:0;color:var(--accent);cursor:pointer;font-size:.82rem;font-weight:600;text-decoration:underline;text-underline-offset:2px}
 
 .resultsbar{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 20px;background:var(--bg);border-bottom:1px solid var(--line);border-top:1px solid var(--line)}
 .resultsbar p{margin:0;font-size:.88rem}
 .resultsbar b{font-variant-numeric:tabular-nums}
-.resultsbar select{font:inherit;font-size:.82rem;border:1px solid var(--line);border-radius:6px;padding:4px 6px;background:var(--surface);color:var(--ink)}
+.resultsbar select{font:inherit;font-size:.82rem;border:1px solid var(--line);border-radius:var(--r);padding:4px 6px;background:var(--surface);color:var(--ink)}
 
 .list{list-style:none;margin:0;padding:12px 20px 24px;display:flex;flex-direction:column;gap:10px}
 .trial{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);min-width:0}
 .trial.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--shadow)}
 .thead{display:block;width:100%;text-align:left;background:none;border:0;padding:12px 14px;cursor:pointer;border-radius:var(--r)}
 .meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:.78rem;color:var(--muted)}
-.pill{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:.76rem;padding:2px 8px 2px 7px;border-radius:999px;background:color-mix(in srgb,var(--c) 13%,transparent);color:var(--c);white-space:nowrap}
+.pill{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:.76rem;padding:2px 8px 2px 7px;border-radius:var(--r);background:color-mix(in srgb,var(--c) 13%,transparent);color:var(--c);white-space:nowrap}
 .pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c)}
 .thead h3{margin:6px 0 4px;font:600 .98rem/1.35 var(--f-body);text-wrap:pretty}
 .conds{margin:0;font-size:.84rem;color:var(--muted)}
@@ -799,7 +800,7 @@ main.grid{flex:1;min-height:0;display:grid;grid-template-columns:minmax(340px,44
 .facts dd{margin:0;min-width:0}
 .sites{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:4px}
 .sites li{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
-.contact{margin-top:12px;padding:10px 12px;background:var(--surface-2);border-radius:8px;font-size:.85rem;display:flex;flex-direction:column;gap:4px}
+.contact{margin-top:12px;padding:10px 12px;background:var(--surface-2);border-radius:var(--r);font-size:.85rem;display:flex;flex-direction:column;gap:4px}
 .contact .line{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .contact .copy{font-size:.72rem;padding:2px 8px}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
@@ -811,7 +812,7 @@ main.grid{flex:1;min-height:0;display:grid;grid-template-columns:minmax(340px,44
 .note p{margin:0 0 6px}.note p:last-child{margin:0}
 
 /* map bits */
-.legend{position:absolute;z-index:500;left:12px;bottom:12px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.75rem;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
+.legend{position:absolute;z-index:500;left:12px;bottom:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:8px 10px;font-size:.75rem;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
 .legend span{display:flex;align-items:center;gap:6px}
 .pin{--c:var(--st-done);display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:var(--c);color:#fff;font:700 12px/1 var(--f-body);border:2px solid var(--surface);box-shadow:0 1px 4px rgba(0,0,0,.35);font-variant-numeric:tabular-nums}
 .pin.sel{outline:3px solid var(--ink);outline-offset:1px}
@@ -824,10 +825,10 @@ main.grid{flex:1;min-height:0;display:grid;grid-template-columns:minmax(340px,44
 .leaflet-bar a,.leaflet-bar a:hover{background:var(--surface);color:var(--ink);border-color:var(--line)}
 .leaflet-control-attribution{background:color-mix(in srgb,var(--surface) 85%,transparent)!important;color:var(--muted)}
 .leaflet-control-attribution a{color:var(--muted)}
-.pop h4{margin:0 0 2px;font:700 .95rem/1.2 var(--f-display)}
+.pop h4{margin:0 0 2px;font:600 .95rem/1.2 var(--f-display)}
 .pop .fac{color:var(--muted);font-size:.76rem;margin:0 0 8px}
 .pop ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;max-height:240px;overflow:auto}
-.pop button{display:flex;gap:8px;align-items:flex-start;text-align:left;width:100%;background:none;border:0;padding:4px;border-radius:6px;cursor:pointer}
+.pop button{display:flex;gap:8px;align-items:flex-start;text-align:left;width:100%;background:none;border:0;padding:4px;border-radius:var(--r);cursor:pointer}
 .pop button:hover{background:var(--surface-2)}
 .pop .swatch{margin-top:5px}
 
@@ -857,7 +858,7 @@ main.grid{flex:1;min-height:0;display:grid;grid-template-columns:minmax(340px,44
 <div class="app">
   <header class="top">
     <div class="brand">
-      <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="17" fill="none" stroke="var(--accent)" stroke-width="2"/><circle cx="19" cy="19" r="9" fill="var(--accent)"/><circle cx="19" cy="19" r="3.6" fill="var(--surface)"/><circle cx="22.5" cy="15.5" r="1.6" fill="var(--surface)" opacity=".85"/></svg>
+      <a class="mark" href="https://leosheck.co.nz" target="_blank" rel="noopener"><svg role="img" aria-label="Leo Sheck" xmlns="http://www.w3.org/2000/svg" viewBox="0 -1 866 80"><path fill="currentColor" fill-rule="nonzero" d="M 229.09 -0.29 C 210.42 -0.29 195.29 13.21 195.29 29.86 C 195.29 33.05 195.86 36.11 196.88 39 C 201.23 26.82 214 14.82 229.09 14.82 C 244.18 14.82 256.95 26.82 261.3 39 C 262.32 36.11 262.89 33.05 262.89 29.86 C 262.89 13.21 247.75 -0.29 229.09 -0.29 M 229.09 63.18 C 214 63.18 201.23 51.18 196.88 39 C 195.86 41.88 195.29 44.95 195.29 48.14 C 195.29 64.79 210.42 78.29 229.09 78.29 C 247.75 78.29 262.89 64.79 262.89 48.14 C 262.89 44.95 262.32 41.88 261.3 39 C 256.95 51.18 244.18 63.18 229.09 63.18 M 97.5 76.62 L 148.43 76.62 L 148.43 64.88 L 110.71 64.88 L 110.71 43.71 L 142.46 43.71 L 142.46 31.98 L 110.71 31.98 L 110.71 13.12 L 148.43 13.12 L 148.43 1.38 L 97.5 1.38 Z M 13.59 1.38 L 0.18 1.38 L 0.18 76.62 L 49.01 76.62 L 49.01 64.88 L 13.59 64.88 Z M 401.32 31.98 C 391.15 29.68 385.39 28.31 385.39 21.71 C 385.39 15.74 390.95 11.65 399.01 11.65 C 407.81 11.65 413.37 16.16 417.56 22.65 L 427.41 14.17 C 422.38 6.31 412.32 0.23 399.43 0.23 C 384.24 0.23 372.29 9.14 372.29 23.07 C 372.29 37.74 384.45 41.09 395.77 43.82 C 406.98 46.54 414.83 47.59 414.83 55.24 C 414.83 62.47 408.44 66.35 399.95 66.35 C 391.36 66.35 383.5 61.63 378.27 53.46 L 368 61.95 C 373.87 71.59 386.65 77.77 399.54 77.77 C 415.04 77.77 428.04 68.65 428.04 53.88 C 428.04 37.54 413.47 34.7 401.32 31.98 M 526.72 31.98 L 490.68 31.98 L 490.68 1.38 L 477.27 1.38 L 477.27 76.62 L 490.68 76.62 L 490.68 43.71 L 526.72 43.71 L 526.72 76.62 L 540.13 76.62 L 540.13 1.38 L 526.72 1.38 Z M 835.55 33.97 L 864.79 1.38 L 848.96 1.38 L 817.74 37.01 L 817.74 1.38 L 804.33 1.38 L 804.33 76.62 L 817.74 76.62 L 817.74 53.88 L 826.86 43.82 L 850.64 76.62 L 866.46 76.62 Z M 725.34 12.07 C 734.14 12.07 740.54 17.41 742.84 26.22 L 755.41 21.92 C 751.02 8.61 740.54 0.23 725.34 0.23 C 705.33 0.23 690.77 16.16 690.77 39 C 690.77 61.84 705.33 77.77 725.34 77.77 C 740.54 77.77 751.02 69.39 755.41 56.08 L 742.84 51.78 C 740.54 60.58 734.14 65.93 725.34 65.93 C 712.98 65.93 704.18 55.24 704.18 39 C 704.18 22.76 712.98 12.07 725.34 12.07 M 594.18 76.62 L 645.1 76.62 L 645.1 64.88 L 607.38 64.88 L 607.38 43.71 L 639.13 43.71 L 639.13 31.98 L 607.38 31.98 L 607.38 13.12 L 645.1 13.12 L 645.1 1.38 L 594.18 1.38 Z M 594.18 76.62"/></svg></a>
       <div>
         <h1>Ophthalmology Trials NZ</h1>
         <p>Ophthalmology clinical trials with sites in Aotearoa New Zealand</p>
